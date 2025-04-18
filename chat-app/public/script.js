@@ -1,4 +1,5 @@
-const socket = io();
+const socket = io('https://chat-v66h.onrender.com'); // Render-URL einfügen
+
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const messages = document.getElementById('messages');

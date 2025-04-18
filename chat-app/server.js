@@ -2,13 +2,20 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const emoji = require('node-emoji'); // Emoji-Bibliothek importieren
+const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: '*', // Erlaube alle Ursprünge (für Debugging)
+        methods: ['GET', 'POST']
+    }
+});
 
 // Statische Dateien bereitstellen
 app.use(express.static('public'));
+app.use(cors());
 
 // Chatverlauf speichern
 const chatHistory = [];
@@ -40,7 +47,7 @@ io.on('connection', (socket) => {
 });
 
 // Server starten
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Render verwendet eine Umgebungsvariable für den Port
 server.listen(PORT, () => {
-    console.log(`Server läuft auf http://localhost:${PORT}`);
+    console.log(`Server läuft auf Port ${PORT}`);
 });
