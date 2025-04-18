@@ -30,13 +30,8 @@ io.on('connection', (socket) => {
     // Nachrichten empfangen und an alle senden
     socket.on('chat message', (msg) => {
         console.log('Nachricht erhalten:', msg);
-        // Kurzcode in Emoji umwandeln
-        const messageWithEmojis = emoji.emojify(msg);
-
-        // Nachricht zum Chatverlauf hinzufügen
+        const messageWithEmojis = emoji.emojify(msg); // Emojis umwandeln
         chatHistory.push({ user: socket.id, text: messageWithEmojis });
-
-        // Nachricht an alle Benutzer senden
         io.emit('chat message', { user: socket.id, text: messageWithEmojis });
     });
 
@@ -47,7 +42,7 @@ io.on('connection', (socket) => {
 });
 
 // Server starten
-const PORT = process.env.PORT || 3000; // Render verwendet eine Umgebungsvariable für den Port
+const PORT = process.env.PORT || 4000; // Ändere 4000 auf einen freien Port
 server.listen(PORT, () => {
     console.log(`Server läuft auf Port ${PORT}`);
 });

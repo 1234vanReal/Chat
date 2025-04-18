@@ -3,7 +3,6 @@ const socket = io('https://chat-v66h.onrender.com'); // Render-URL einfügen
 const form = document.getElementById('form');
 const input = document.getElementById('input');
 const messages = document.getElementById('messages');
-const emojiPicker = document.getElementById('emoji-picker');
 const usernameDisplay = document.getElementById('username-display');
 
 // Benutzernamen aus sessionStorage abrufen
@@ -34,7 +33,6 @@ socket.on('chat history', (history) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (input.value) {
-        // Nachricht mit Benutzername senden
         socket.emit('chat message', { user: username, text: input.value });
         input.value = '';
     }
@@ -50,9 +48,4 @@ socket.on('chat message', (msg) => {
 
     // Automatisch nach unten scrollen
     messages.scrollTop = messages.scrollHeight;
-});
-
-// Emoji auswählen und ins Eingabefeld einfügen
-emojiPicker.addEventListener('emoji-click', (event) => {
-    input.value += event.detail.unicode; // Emoji zum Eingabefeld hinzufügen
 });
