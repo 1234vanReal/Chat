@@ -77,6 +77,10 @@
             width: 100%;
             max-width: 400px;
             margin: 10px auto;
+            display: block; /* Sicherstellen, dass der Picker sichtbar ist */
+        }
+        emoji-picker {
+            border: 1px solid red; /* Sichtbarer Rahmen zum Debuggen */
         }
     </style>
     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1.0.0/dist/emoji-picker-element.js"></script>
@@ -84,6 +88,7 @@
 <body>
     <header>
         <h1>Chat App</h1>
+        <p id="username-display" style="color: #fff; font-size: 16px; margin-top: 5px;"></p>
     </header>
     <nav>
         <a href="https://1234vanreal.github.io/Trinity-Protocol/index.html">Home</a>
