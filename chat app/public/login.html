@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+ 
+
+<html lang="en">
+ 
+
+<head>
+ 
+
+    <meta charset="UTF-8">
+ 
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+
+    <title>Login - Chat App</title>
+ 
+
+    <style>
+ 
+
+        body {
+ 
+
+            font-family: Arial, sans-serif;
+ 
+
+            margin: 0;
+ 
+
+            padding: 0;
+ 
+
+            background-color: #f4f4f4;
+ 
+
+            text-align: center;
+ 
+
+        }
+ 
+
+        header {
+ 
+
+            background: #333;
+ 
+
+            color: #fff;
+ 
+
+            padding: 10px 20px;
+ 
+
+        }
+ 
+
+        main {
+ 
+
+            padding: 20px;
+ 
+
+        }
+ 
+
+        input {
+ 
+
+            display: block;
+ 
+
+            margin: 10px auto;
+ 
+
+            padding: 10px;
+ 
+
+            width: 300px;
+ 
+
+            border: 1px solid #ddd;
+ 
+
+        }
+ 
+
+        button {
+ 
+
+            padding: 10px 20px;
+ 
+
+            background-color: #444;
+ 
+
+            color: white;
+ 
+
+            border: none;
+ 
+
+            cursor: pointer;
+ 
+
+        }
+ 
+
+        button:hover {
+ 
+
+            background-color: #555;
+ 
+
+        }
+ 
+
+        #errorMessage {
+ 
+
+            color: red;
+ 
+
+            display: none;
+ 
+
+        }
+ 
+
+    </style>
+ 
+
+</head>
+ 
+
+<body>
+ 
+
+    <header>
+ 
+
+        <h1>Login zur Chat App</h1>
+ 
+
+    </header>
+ 
+
+    <main>
+ 
+
+        <input type="text" id="username" placeholder="Benutzername eingeben">
+ 
+
+        <input type="password" id="password" placeholder="Passwort eingeben">
+ 
+
+        <button onclick="checkLogin()">Login</button>
+ 
+
+        <p id="errorMessage">Falscher Benutzername oder Passwort!</p>
+ 
+
+    </main>
+ 
+
+    <script>
+ 
+
+        function checkLogin() {
+ 
+
+            const username = document.getElementById('username').value;
+ 
+
+            const password = document.getElementById('password').value;
+ 
+
+
+ 
+
+            // Beispiel-Benutzerdaten
+ 
+
+            const users = [
+ 
+
+                { username: "Nolord", password: "KIistdieZukunft" },
+ 
+
+                { username: "1234van", password: "passwort123" },
+ 
+
+                { username: "Vincere", password: "FckAfD" },
+ 
+
+                { username: "SuS_753", password: "bin-auch-dabei" }
+ 
+
+            ];
+ 
+
+
+ 
+
+            // Überprüfen, ob Benutzername und Passwort übereinstimmen
+ 
+
+            const authenticatedUser = users.find(user => user.username === username && user.password === password);
+ 
+
+
+ 
+
+            if (authenticatedUser) {
+ 
+
+                // Benutzernamen in sessionStorage speichern
+ 
+
+                sessionStorage.setItem("username", authenticatedUser.username);
+ 
+
+
+ 
+
+                // Weiterleitung zur Chat-Seite
+ 
+
+                window.location.href = "index.html";
+ 
+
+            } else {
+ 
+
+                document.getElementById('errorMessage').style.display = "block";
+ 
+
+            }
+ 
+
+        }
+ 
+
+    </script>
+ 
+
+</body>
+ 
+
+</html>
