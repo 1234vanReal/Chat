@@ -22,6 +22,7 @@ io.on('connection', (socket) => {
 
     // Nachrichten empfangen und an alle senden
     socket.on('chat message', (msg) => {
+        console.log('Nachricht erhalten:', msg);
         // Kurzcode in Emoji umwandeln
         const messageWithEmojis = emoji.emojify(msg);
 
