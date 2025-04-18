@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
+const emoji = require('node-emoji'); // Emoji-Bibliothek importieren
 
 const app = express();
 const server = http.createServer(app);
@@ -21,11 +22,14 @@ io.on('connection', (socket) => {
 
     // Nachrichten empfangen und an alle senden
     socket.on('chat message', (msg) => {
+        // Kurzcode in Emoji umwandeln
+        const messageWithEmojis = emoji.emojify(msg);
+
         // Nachricht zum Chatverlauf hinzufügen
-        chatHistory.push(msg);
+        chatHistory.push({ user: socket.id, text: messageWithEmojis });
 
         // Nachricht an alle Benutzer senden
-        io.emit('chat message', msg);
+        io.emit('chat message', { user: socket.id, text: messageWithEmojis });
     });
 
     // Benutzer trennt die Verbindung
