@@ -1,0 +1,27 @@
+{
+  "name": "messenger-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Messenger App with user authentication and chat functionalities.",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "dev": "ts-node-dev src/app.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.9",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.2",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

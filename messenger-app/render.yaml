@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: messenger-backend
+    env: node
+    build:
+      command: cd messenger-app/backend && npm install
+    start:
+      command: npm start
+    envVars:
+      - key: DATABASE_URL
+        value: <deine-datenbank-url>
+  frontend:
+    type: static
+    name: messenger-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    publishDir: frontend/build
+    autoDeploy: true
+build:
+  command: cd messenger-app/backend && npm install
